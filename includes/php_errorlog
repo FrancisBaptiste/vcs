@@ -1,0 +1,6 @@
+[02-Apr-2014 17:24:00 CST6CDT] PHP Parse error:  syntax error, unexpected T_STRING in /home/vancitys/public_html/includes/encryption.php on line 55
+[02-Apr-2014 18:00:41 CST6CDT] PHP Parse error:  syntax error, unexpected T_DNUMBER in /home/vancitys/public_html/includes/encryption.php on line 61
+[02-Apr-2014 18:00:53 CST6CDT] PHP Fatal error:  Call to undefined function int() in /home/vancitys/public_html/includes/encryption.php on line 25
+[02-Apr-2014 18:20:11 CST6CDT] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/vancitys/public_html/includes/encryption.php on line 3
+[02-Apr-2014 18:20:23 CST6CDT] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/vancitys/public_html/includes/encryption.php on line 3
+[02-Apr-2014 19:08:24 CST6CDT] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/vancitys/public_html/includes/encryption.php on line 62

@@ -1,0 +1,878 @@
+body{
+    font-family: arial, sans-serif;
+}
+
+#wrapper{
+    width: 1100px;
+    margin: 0 auto;
+}
+
+#description, #description a{
+	color: #AAA;
+	position:absolute;
+	margin-left: 447px;
+	margin-top: -50px;
+	font-size: 0.8em;
+	text-decoration: none;
+	display: block;
+}
+
+#currentTopicBar{
+	color: #AAA;
+	border-bottom: 1px solid #AAA;
+	font-size: 0.8em;
+	margin-bottom: 15px;
+}
+
+#sidebar{
+    width: 200px;
+    /*
+    background: #EEE;
+    padding: 10px;
+    */
+    font-size: 14px;
+    float:left;
+    margin-right: 30px;
+}
+
+ul{
+    list-style: none;
+    padding:0;
+}
+#sidebar a{
+    color:black;
+}
+
+#profilePic{
+    width: 25px;
+    height: auto;
+    float:left;
+    margin: 0 10px 10px 0;
+    position:relative;
+    top: 4px;
+    left: 6px;
+}
+
+#sidebar h2{
+    margin-top: 0;
+    font-weight: normal;
+    font-size: 12px;
+    position:relative;
+    top: 10px;
+}
+
+
+#sidebar p{
+    clear:both;
+}
+
+#sidebar h3, #right h3, strong, #sidebar h3 a{
+    margin: 0;
+    color: #E66502;
+    text-decoration: none;
+    /*border-bottom: 1px solid #FFDDAA;*/
+}
+#sidebar h3 a:hover{
+	text-decoration: underline;
+}
+#right h3{
+    margin-bottom: 15px;
+}
+#sidebar ul{
+    margin-top: 0px;
+}
+
+#sidebar ul li{
+    padding: 3px 5px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    transition: 300ms all;
+}
+#sidebar ul li:hover{
+    background: #f0f0f0;
+}
+#sidebar ul li a{
+    color: #333;
+    text-decoration:none;
+}
+
+#main{
+    float:left;
+    width: 600px;
+}
+
+
+
+#signupBlock span, #loginBlock span{
+    color: #06F;
+    /*color: #E66502;*/
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.textInput{
+    height: 38px;
+    width: 190px;
+    background: url(images/input2.jpg);
+    border:none;
+    display:block;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+
+#requestInviteBtn{
+    background: url(images/signup.jpg);
+    width: 202px;
+    height: 58px;
+    border: none;
+    margin: 10px 0 30px 0;
+    cursor:pointer;
+}
+#bigButton2{
+    background: url(images/login.jpg);
+    width: 202px;
+    height: 58px;
+    border: none;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+}
+
+#inviteBtn{
+    cursor:pointer;
+    margin-bottom: 30px;
+}
+
+#signupBtn{
+    margin-bottom: 30px;
+}
+
+
+.post{
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #DDD;
+}
+.post p{
+    margin-bottom: 15px;
+    min-height: 26px;
+}
+
+.picMask{
+    width: 25px;
+    height: 25px;
+    overflow:hidden;
+    float:left;
+    margin-right: 10px;
+}
+.post img, .comment img{
+    width: 25px;
+}
+
+.comment{
+    margin-left: 50px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+}
+.comment p{
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.post_image{
+    margin-left: 35px;
+}
+.post_image img{
+    width: 550px;
+}
+
+#main em{
+    font-size: 0.7em;
+    color: #BBB;
+}
+
+
+#commentPost{
+    height: 50px;
+    width: 500px;
+    margin-left: 35px;
+}
+#notificationBox #commentPost{
+	width: 460px !important;
+}
+#commentPostButton{
+    background:black;
+    color:white;
+    padding: 5px;
+    font-size: 0.8em;
+    cursor:pointer;
+    margin-left: 430px;
+    width: 100px;
+    margin-bottom: 20px;
+}
+#notificationBox #commentPostButton{
+	margin-left: 390px !important;
+}
+
+#post, #message{
+    height: 50px;
+    width: 595px;
+}
+
+#postButton, #messageButton, #commentButton, .responseButton, .messageButton{
+    background:#F6F6F6;
+    color: #E66502;
+    padding: 10px;
+    cursor:pointer;
+    float:right;
+    border: 1px solid #59F;
+}
+
+
+#posts{
+    padding-top: 10px;
+    clear:both;
+}
+
+
+#loadMore{
+    padding: 10px;
+    background: black;
+    color:white;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+
+.actionLine span{
+    color: #BBB;
+    display: inline-block;
+    padding: 4px;
+    font-size: 0.5em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    cursor:pointer;
+    float:right;
+}
+.actionLine span a{
+	color: #9F9F9F;
+}
+
+.breaker{
+    clear:both;
+    margin: 10px;
+}
+
+.notification{
+    cursor:pointer;
+}
+/*
+#notificationBox{
+    padding: 5px 15px;
+    position: fixed;
+    width: 600px;
+    background: white;
+    top: 50px;
+    left: 50%;
+    margin-left: -300px;
+    display:none;
+    -moz-box-shadow:    0 0 10px 3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);
+    box-shadow:         0 0 10px 3px rgba(0, 0, 0, 0.5);
+}
+*/
+
+/*
+#notification-head{
+    background:black;
+    color:white;
+    position:relative;
+    padding: 0 5px;
+}
+
+#notification-head > div{
+    position:absolute;
+    top:2px;
+    right:5px;
+    font-weight: bold;
+    cursor:pointer;
+}
+*/
+/*
+#oldNotifications{
+    cursor: pointer;
+}
+#oldNotificationsList{
+    display:none;
+}
+*/
+
+.removeFav, .addFav{
+    cursor: pointer;
+    font-size: 0.7em;
+}
+.removeFav{
+    color: #F44;
+}
+.addFav{
+    color:#0C0;
+}
+
+
+#editProfile, #cancelEdit{
+	clear:both;
+    cursor:pointer;
+    /*
+    font-size: 11px;
+    color: #AAA;
+    */
+}
+
+
+#right{
+    width: 220px;
+    float:right;
+}
+
+#right h4{
+    margin: 0;
+    padding: 0;
+	color: #888;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 14px;
+	padding-bottom: 15px;
+    border-bottom: 1px dashed #DDD;
+    margin-bottom: 20px;
+	cursor: pointer;
+}
+
+
+/* inbox */
+
+#allConversations{
+	clear:both;
+}
+#allConversations ul li{
+	cursor:pointer;
+}
+
+#messageNotifications, #notificationsMessage{
+	margin-bottom: 30px;
+	font-size: 0.9em;
+}
+#messageNotifications h4, #notificationsMessage h4{
+	color: #E66502;
+	border-bottom: 1px solid #E66502;
+	margin-bottom: 7px;
+}
+#messageNotifications a{
+	text-decoration: none;
+	color:black;
+	display:block;
+	padding: 20px;
+	background: #f2f2f2;
+	margin-bottom: 2px;
+}
+#messageNotifications a:hover{
+	background: #EEE;
+}
+
+.notificationAlert{
+	text-decoration: none;
+	color:black;
+	display:block;
+	padding: 20px;
+	background: #f2f2f2;
+	margin-bottom: 2px;
+	font-size: 0.9em;
+}
+
+.messNot span, .notificationAlert span{
+	color: #E66502;
+}
+
+.unread{
+	font-size: 0.78em;
+	position: absolute;
+	margin-left: 3px;
+	margin-top: -3px;
+}
+
+/* NEWS PAGE */
+#wrapperNews{
+    width: 95%;
+    margin: 0 auto;
+}
+#wrapperNews #description{
+    position:relative;
+    left: -14px;
+    text-align: center;
+    margin-left: 0;
+}
+#mainNews{
+    width: 100%;
+}
+#allStories{
+    margin-left: 230px;
+}
+.story{
+    width: 220px;
+    float:left;
+    margin-right: 20px;
+    height: 260px;
+}
+.newsImageMask{
+    width: 220px;
+    height: 140px;
+    overflow:hidden;
+}
+.story h4{
+    max-height: 80px;
+    overflow:hidden;
+}
+
+#currentStory{
+    /* margin-left: 230px; */
+	margin-left: 42px;
+    float:left;
+    width: 480px;
+}
+#currentStory h2{
+    margin-top: 0;
+}
+#currentStory h3{
+    margin-bottom: 0;
+}
+
+#currentStory #storyImage{
+    float:left;
+    margin-right: 15px;
+}
+#currentStory #comment{
+    width: 475px;
+    height: 100px;
+}
+#guestName{
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+#latestNewsfeed{
+    margin-left: 760px;
+}
+
+#newsComments{
+    clear:both;
+}
+#newsComments .comment {
+    margin-bottom: 40px;
+    margin-left: 0;
+    padding-bottom: 5px !important;
+	border-left: 1px solid #eee;
+	padding-left: 5px;
+}
+#newsComments .comment.threaded{
+    
+}
+
+/*
+#newsComments .comment.indent1{ margin-left: 15px; }
+#newsComments .comment.indent2{ margin-left: 30px; }
+#newsComments .comment.indent3{ margin-left: 45px; }
+#newsComments .comment.indent4{ margin-left: 60px; }
+#newsComments .comment.indent5{ margin-left: 75px; }
+#newsComments .comment.indent6{ margin-left: 80px; }
+#newsComments .comment.indent7{ margin-left: 95px; }
+#newsComments .comment.indent9{ margin-left: 110px; }
+#newsComments .comment.indent9{ margin-left: 125px; }
+#newsComments .comment.indent10{ margin-left: 140px; }
+*/
+#newsComments .comment.indent1{ border-left: 20px solid #eee; }
+#newsComments .comment.indent2{ border-left: 40px solid #eee; }
+#newsComments .comment.indent3{ border-left: 60px solid #eee; }
+#newsComments .comment.indent4{ border-left: 80px solid #eee; }
+#newsComments .comment.indent5{ border-left: 100px solid #eee; }
+#newsComments .comment.indent6{ border-left: 120px solid #eee; }
+#newsComments .comment.indent7{ border-left: 140px solid #eee; }
+#newsComments .comment.indent9{ border-left: 160px solid #eee; }
+#newsComments .comment.indent9{ border-left: 180px solid #eee; }
+#newsComments .comment.indent10{ border-left: 200px solid #eee; }
+
+#newsComments .comment em{
+	color: #AAA;
+	font-size: 0.7em;
+	position:relative;
+	top: -5px;
+}
+
+.replyLine{
+	font-size: 0.7em;
+	color: #AAA;
+	clear:both;
+	border-bottom: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	height: 15px;
+	padding-top: 3px;
+	cursor:pointer;
+	margin-top: 20px;
+}
+.replyLine .messageUser{
+	float:left;
+}
+.replyLine .respondComment{
+	float:right;
+}
+
+
+.responseBlock{
+	display:none;
+}
+.responseGuestName{
+	width: 100%;
+}
+.response{
+	width: 100%;
+}
+
+
+#messageUserMask, #notificationMask{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top:0;
+	left:0;
+	background: black;
+	background: rgba(0, 0, 0, 0.5);
+	display:none;
+}
+
+#messageUserBox, #notificationBox, #aboutBox{
+	background: white;
+	width: 500px;
+	position:fixed;
+	top: 100px;
+	left: 50%;
+	margin-left: -260px;
+	padding: 20px;
+}
+#aboutBox{
+	display: none;
+	z-index:1000;
+	width: 700px;
+	margin-left: -360px;
+}
+
+#message{
+	width: 494px;
+	height: 150px;
+}
+
+#messageClose, #notification-close, #aboutClose{
+	position:absolute;
+	top:20px;
+	right:25px;
+	cursor:pointer;
+}
+
+#messageNote{
+	font-size: 11px;
+	color: #AAA;
+	font-style: oblique;
+}
+
+#homeLink{
+	display:block;
+	width: 200px;
+	height: 90px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -110px;
+}
+#homeLink a{
+	display:block;
+	width: 200px;
+	height: 90px;
+}
+
+#fullStory{
+	clear:both;
+	padding: 20px 0;
+}
+
+.storyDetails{
+	font-size: 0.7em;
+}
+
+
+#currentStory a{
+	color: #E66502;
+}
+
+.story a{
+	color: #E66502;
+}
+
+
+#commentsHeader{
+	padding-top: 30px;
+	clear:both;
+	padding-bottom: 20px;
+}
+
+#backHome{
+	position:relative;
+	top: -20px;
+}
+#backHome a{
+	color: #E66502;
+	font-size: 0.9em;
+	text-decoration: none;
+}
+
+
+.userPopup{
+	display:none;
+	padding: 5px 10px;
+	background: #AAA;
+	color: white;
+	position: absolute;
+	margin-top: -25px;
+	margin-left: 60px;
+	font-size: 0.6em;
+}
+
+.userRollover{
+	cursor: pointer;
+}
+
+.bodyHeader{
+	margin-top: 0;
+	color: #E66502;
+	border-bottom: 1px solid #AAA;
+	margin-bottom: 25px;
+	padding-bottom: 6px;
+}
+
+#userBlock.inboxUser{
+	padding-bottom: 4px;
+	margin-bottom: 20px;
+	/*
+	border-bottom: 1px solid #AAA;
+	*/
+}
+
+#message.inboxMess {
+	width: 595px;
+}
+
+.sectionHeader, #messageHeader, #notification-head, #aboutHeader{
+	font-size: 11px;
+	color: #E66502 !important;
+	border-bottom: 1px solid #06F;
+	border-bottom: 1px solid #59F;
+	clear:both;
+	margin-bottom: 15px;
+	margin-top: 0;
+	padding-bottom: 2px;
+	font-style: normal;
+	font-weight: normal;
+}
+
+#main #allTopics li{
+	float:left;
+	min-width: 200px;
+	margin: 0 0 10px 0;
+}
+
+#main #allTopics li a{
+	color: black;
+}
+
+#right p{
+	font-size: 12px;
+}
+
+#allUsers .sendUserMessage, #allUsers .addToFriendlist{
+	background: #CCC;
+	color: white;
+	padding: 4px;
+	font-size: 0.5em;
+	display: inline-block;
+	margin-left: 15px;
+	position:relative;
+	top: -3px;
+	cursor: pointer;
+	transition: all 500ms;
+	-webkit-transition: all 500ms;
+	-moz-transition: all 500ms;
+}
+#allUsers .addToFriendlist{
+	margin-left: 5px;
+}
+
+.removeFriend{
+	color: white;
+	font-size: 8px;
+	position: relative;
+	top: -6px;
+	left: 3px;
+	cursor: pointer;
+	display:inline-block;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.2);
+	width: 8px;
+	height: 9px;
+	padding: 1px 0 0 2px;
+}
+
+.userInformation{
+	display:none;
+	position:absolute;
+	width: 400px;
+	min-height: 150px;
+	background: #FBFBFB;
+	border: 1px solid #59F;
+	padding: 10px;
+}
+.userInformation img{
+	width: 150px;
+	height: 150px;
+	float:left;
+	margin-right: 10px;
+}
+.userInformation > div > span{
+	color: #E66502;
+}
+.userInformation p{
+	font-size: 0.9em;
+}
+.userInformation p > span{
+	color: #06F;
+}
+.userButton{
+	background: #CCC;
+    color: white;
+    display: inline-block;
+    padding: 4px;
+    font-size: 0.5em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    cursor:pointer;
+}
+
+#topicsTop{
+	margin-bottom: 0;
+	cursor: pointer;
+}
+#submit{
+	margin-top: 15px;
+}
+#topicsDropDown{
+    display:none;
+    background: #F6F6F6;
+    border: 1px solid #59F;
+    border-top: none;
+    padding: 5px 10px;
+}
+
+#dropDownArrow{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background: url(images/arrows2.png);
+	background-position: 10px 0;
+	overflow: hidden;
+	margin-left: 5px;
+}
+#dropDownTopics li{
+	display: inline-block;
+	width: 30%;
+	font-size: 0.8em;
+}
+#dropDownTopics a{
+	color:black;
+	text-decoration: none;
+}
+
+
+.newsPost{
+	color: #999;
+	font-size: 0.8em;
+}
+.newsPost a{
+	color: #888;
+}
+
+.mainText a{
+	color: #666;
+	font-size: 0.9em;
+	word-wrap: break-word;
+}
+.mainText{
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+   -moz-hyphens: auto;
+    hyphens: auto;
+}
+
+.viewAllComments{
+	color:#BBB;
+	font-size: 0.8em;
+	margin-left: 50px;
+	padding-bottom: 10px;
+	cursor: pointer;
+}
+
+.hiddenComment{
+	display:none;
+}
+
+#fixedFooter{
+	position:fixed;
+	bottom:0;
+	right:0;
+	padding: 5px;
+	background: #AAA;
+	color:white;
+	font-size: 9px;
+	width: 100%;
+	text-align: right;
+}
+#footerAbout{
+	maring-right: 30px;
+	display:inline-block;
+}
+#footerContact, #footerAbout{
+	cursor:pointer;
+}
+
+#fullScreen{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background: grey;
+	background: rgba(0, 0, 0, 0.55);
+	z-index: 500;
+}
+
+.newsImage{
+	cursor:pointer;
+}
+#newsBox, #invitationBox{
+	width: 600px;
+	background: white;
+	display:none;
+	position:absolute;
+	margin-left: -310px;
+	left: 50%;
+	padding: 20px;
+	z-index: 500;
+	margin-top: 20px;
+}
+

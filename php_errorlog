@@ -1,0 +1,74 @@
+[07-May-2014 18:29:33 CST6CDT] PHP Parse error:  syntax error, unexpected $end, expecting T_VARIABLE or T_DOLLAR_OPEN_CURLY_BRACES or T_CURLY_OPEN in /home/vancitys/public_html/app.php on line 84
+[07-May-2014 18:40:38 CST6CDT] PHP Fatal error:  Cannot redeclare makeClickableLinks() (previously declared in /home/vancitys/public_html/app.php:227) in /home/vancitys/public_html/app.php on line 227
+[08-May-2014 18:20:49 CST6CDT] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/vancitys/public_html/signup.php on line 33
+[08-May-2014 18:21:54 CST6CDT] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/vancitys/public_html/signup.php on line 33
+[08-May-2014 18:21:59 CST6CDT] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/vancitys/public_html/signup.php on line 33
+[08-May-2014 18:22:11 CST6CDT] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/vancitys/public_html/signup.php on line 33
+[08-May-2014 18:23:02 CST6CDT] PHP Fatal error:  Cannot pass parameter 2 by reference in /home/vancitys/public_html/signup.php on line 33
+[08-May-2014 18:34:42 CST6CDT] PHP Fatal error:  Call to undefined function SortByKeyValue() in /home/vancitys/public_html/news_admin.php on line 59
+[08-May-2014 18:36:13 CST6CDT] PHP Fatal error:  Call to undefined function SortByKeyValue() in /home/vancitys/public_html/news_admin.php on line 59
+[08-May-2014 18:57:36 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 11
+[08-May-2014 18:57:43 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 11
+[08-May-2014 18:58:54 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 11
+[08-May-2014 19:01:31 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 11
+[08-May-2014 22:15:57 CST6CDT] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/vancitys/public_html/app.php on line 193
+[09-May-2014 01:15:11 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 11
+[09-May-2014 01:15:32 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 11
+[09-May-2014 01:15:42 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/lookup.php on line 204
+[09-May-2014 08:36:54 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 8
+[09-May-2014 08:37:03 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 8
+[09-May-2014 08:54:16 CST6CDT] PHP Fatal error:  Call to a member function query() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 11
+[09-May-2014 16:07:01 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/vancitys/public_html/app.php on line 48
+[12-May-2014 17:54:16 CST6CDT] PHP Fatal error:  Call to undefined function decode_id() in /home/vancitys/public_html/app.php on line 22
+[14-May-2014 18:31:58 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/lookup.php on line 204
+[14-May-2014 18:48:22 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[14-May-2014 18:51:25 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[14-May-2014 23:17:09 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[15-May-2014 23:30:59 CST6CDT] PHP Fatal error:  Call to undefined function makeClickableLinks() in /home/vancitys/public_html/app.php on line 253
+[17-May-2014 02:32:39 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[22-May-2014 21:41:24 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/lookup.php on line 207
+[22-May-2014 21:41:28 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/lookup.php on line 207
+[22-May-2014 22:18:12 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/lookup.php on line 207
+[22-May-2014 22:20:44 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/lookup.php on line 207
+[04-Jun-2014 15:41:56 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[04-Jun-2014 15:42:16 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[13-Jun-2014 15:03:50 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[13-Jun-2014 17:44:04 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[27-Jun-2014 22:01:39 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[05-Jul-2014 12:45:06 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[05-Jul-2014 12:45:07 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[05-Jul-2014 12:45:10 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[09-Jul-2014 12:50:23 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[09-Jul-2014 12:50:43 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[15-Jul-2014 08:18:53 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[15-Jul-2014 08:19:56 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[26-Jul-2014 15:56:56 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[30-Jul-2014 23:40:06 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/news.php on line 111
+[04-Aug-2014 21:38:25 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[05-Aug-2014 07:37:04 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[05-Aug-2014 07:37:24 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[08-Aug-2014 09:43:40 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[18-Aug-2014 16:58:54 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[18-Aug-2014 16:58:56 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[21-Aug-2014 14:13:42 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[23-Aug-2014 07:11:20 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[30-Aug-2014 13:01:12 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[30-Aug-2014 13:01:17 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[31-Aug-2014 00:32:27 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[10-Sep-2014 10:47:14 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[10-Sep-2014 10:47:35 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[17-Sep-2014 21:25:20 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[27-Sep-2014 02:49:38 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[27-Sep-2014 02:49:41 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[03-Oct-2014 08:14:47 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/app.php on line 44
+[06-Oct-2014 19:50:25 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[06-Oct-2014 19:50:45 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[09-Oct-2014 01:53:48 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[09-Oct-2014 01:53:54 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[28-Oct-2014 06:46:47 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[28-Oct-2014 06:46:48 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[10-Nov-2014 23:28:21 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/news.php on line 111
+[13-Nov-2014 13:10:03 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[13-Nov-2014 13:10:05 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[22-Nov-2014 01:00:37 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
+[22-Nov-2014 01:00:39 CST6CDT] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/vancitys/public_html/includes/updateInboxStatus.php on line 22
