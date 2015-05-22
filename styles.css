@@ -1181,3 +1181,113 @@ ul{
 	color: #3a88e7;
 	cursor: pointer;
 }
+
+
+/* ----------- styles for the splash page ------------- */
+
+#splash-body{
+	margin: 10px 0 0 0;
+	background: url(images/blur8.jpg) no-repeat center center fixed;
+}
+#splash-body #loginButton, #splash-body #redeemButton{
+	margin-top: 55px;
+	font-size: 13px;
+}
+#splash-body #buttonDivide{
+	margin-top: 53px;
+}
+#splash-body #wrapper{
+	width: auto;
+	max-width: 1000px;
+}
+#splash-body #mainHeader{
+	margin-bottom: 0;
+}
+#splash{
+	width: 100%;
+	height: 550px;
+	background: white;
+	margin:0;
+	background: url(images/splash6.jpg) no-repeat center center;
+	background-size:cover;
+}
+#splash h2{
+	text-align: center;
+	color:white;
+	padding-top: 30px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 2.5em;
+	line-height: 1.5em;
+	margin-top: 10px;
+}
+#splash h2 span{
+	color: #3a88e7;
+	font-weight: 400;
+}
+
+#splash-features{
+	margin: 0 50px;
+	max-width: 1300px;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+.splash-feature-block{
+	width: 33.3333%;
+	float: left;
+}
+.splash-feature-content{
+	padding: 30px;
+}
+.splash-feature-content h4{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 1.5em;
+	color: #3a88e7;
+}
+.splash-feature-content p{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 1em;
+	line-height: 2em;
+	padding-bottom: 50px;
+}
+#splash-invite{
+	height: 600px;
+	text-align: center;
+}
+#splash-invite a{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	color: #3a88e7;
+	font-size: 2em;
+	text-decoration: none;
+}
+.splash-50{
+	width: 50%;
+	float: left;
+	height: 300px;
+	box-shadow: 10px 0 10px #CCC;
+}
+.splash-50-inside{
+	padding: 60px;
+	margin-top: 60px;
+}
+.left-50{
+	background-color: white;
+	
+}
+.right-50{
+	background-color: #EFEFEF;
+	
+}
+
+#splash-footer{
+	background: #3a88e7;
+	height: 150px;
+	clear:both;
+}

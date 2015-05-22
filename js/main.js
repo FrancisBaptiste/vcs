@@ -1,7 +1,9 @@
-$restaurants = ['food', 'dinner', 'lunch', 'breakfast', 'brunch', 'restaurant', 'restaurants', 'diner', 'cafe', 'bar', 'pub', 'drink', 'drinks', 'ate'];
-$food = ['cook', 'cooks', 'cookie', 'cookies', 'dessert', 'desserts', 'cooking', 'recipe', 'recipies', 'ingredients', 'sugar', 'salt', 'munch', 'munchie', 'munchies', 'chip', 'chips', 'tasty', 'delicious', 'food', 'chef', 'kitchen', 'chocolate', 'fruit', 'bread', 'baking', 'banana', 'pie', 'pies', 'cake', 'cakes', 'sweets', 'hungry', 'starving', 'eat', 'bite'];
-$music = ['band', 'guitar', 'drums', 'concert', 'performance', 'singer', 'singing', 'sing', 'venue', 'music'];
-
+$food = ['food', 'dinner', 'lunch', 'breakfast', 'brunch', 'restaurant', 'restaurants', 'diner', 'cafe', 'bar', 'pub', 'drink', 'drinks', 'pint', 'brew', 'ate', 'cook', 'cooks', 'cookie', 'cookies', 'dessert', 'desserts', 'cooking', 'recipe', 'recipies', 'ingredients', 'sugar', 'salt', 'munch', 'munchie', 'munchies', 'chip', 'chips', 'tasty', 'delicious', 'food', 'chef', 'kitchen', 'chocolate', 'fruit', 'bread', 'baking', 'banana', 'pie', 'pies', 'cake', 'cakes', 'sweets', 'hungry', 'starving', 'eat', 'bite', 'meal', 'eat'];
+$sports = ['hockey', 'football', 'basketball', 'golf', 'tennis', 'sports', 'playoffs', 'nhl', 'MLB', 'NBA', 'playoff', 'penalty', 'shootout', 'OT', 'Canucks', 'Blackhawks'];
+$music = ['band', 'guitar', 'drums', 'concert', 'performance', 'singer', 'singing', 'sing', 'venue', 'music', 'tune', 'tunes', 'beat', 'dj', 'mixtape', 'listening', 'song', 'album'];
+$tv = ['tv', 'movie', 'movies', 'hbo', 'nbc', 'sitcom', 'theatre', 'theater', 'watching', 'watched'];
+$health = ['running', 'run', 'biking', 'bike', 'seawall', 'hike', 'hiking', 'trail', 'yoga', 'fitness', 'health', 'healthy', 'diet', 'dieting', 'exercise', 'crossfit', 'gym', 'workout', 'fitbit', 'situps', 'climbing', 'swim', 'swimming', 'climb', 'pool', 'golfing', 'snowboarding', 'skating'];
+$books = ['read', 'reading', 'book', 'books', 'writer', 'author', 'library', 'magazine', 'textbook'];
 
 $(function(){
     $("#postButton").click(function(){
@@ -30,16 +32,36 @@ $(function(){
 	        $lastWord = $words[$words.length-1].replace(".", "").toLowerCase();
 	        //check this word against he db.
 	        //just loading a giant array onto the page might be easier.
-	        if($restaurants.indexOf($lastWord) !== -1){
-		        $("#suggestion").html("Suggested Topic: <span data-interest='4'>Restaurants</span> ").fadeIn();
-	        }else if($food.indexOf($lastWord) !== -1){
-		        $("#suggestion").html("Suggested Topic: <span data-interest='16'>Food</span> ").fadeIn();
+	        if($food.indexOf($lastWord) !== -1){
+		        $("#suggestion").html("Suggested Topic: <span data-interest='3'>food & drink</span> ").fadeIn();
+	        }else if($sports.indexOf($lastWord) !== -1){
+		        $("#suggestion").html("Suggested Topic: <span data-interest='4'>sports</span> ").fadeIn();
 	        }else if($music.indexOf($lastWord) !== -1){
-		        $("#suggestion").html("Suggested Topic: <span data-interest='5'>Music</span> ").fadeIn();
+		        $("#suggestion").html("Suggested Topic: <span data-interest='5'>music</span> ").fadeIn();
+	        }else if($tv.indexOf($lastWord) !== -1){
+		        $("#suggestion").html("Suggested Topic: <span data-interest='6'>movies & tv</span> ").fadeIn();
+	        }else if($health.indexOf($lastWord) !== -1){
+		        $("#suggestion").html("Suggested Topic: <span data-interest='7'>health & fitness</span> ").fadeIn();
+	        }else if($books.indexOf($lastWord) !== -1){
+		        $("#suggestion").html("Suggested Topic: <span data-interest='8'>books</span> ").fadeIn();
 	        }
 	        	        
         }
     });
+    
+    $("#main").on("click", "#suggestion span", function(){
+	    if($("#suggestion").attr("data-selected") == 1){
+		    $("#suggestion").fadeOut();
+		    $("#suggestion").attr("data-selected", 0);
+	    }else{
+		    $thisInterestID = $(this).attr('data-interest');
+			$thisInterestName = $(this).text();
+			$("#posts").attr('data-interest', $thisInterestID);
+			$("#postButton").text("Post to " + $thisInterestName);
+			$("#suggestion").html("revert to <span data-interest='0'>all posts</span>");
+			$("#suggestion").attr("data-selected", 1);
+	    }
+	});
     
     $("#post").focus(function(){
         if ($(this).val() == "What's going on?") {
@@ -58,23 +80,49 @@ $(function(){
             if(data == "true"){
                 $("#post").val("");
                 $newContent = "<div class='post'>";
-                $newContent += '<div class="topicTag" style="background-color: rgb(112, 112, 158)"><span><a href="app.php?i=0">general</a></span></div>';
+                //$newContent += '<div class="topicTag" style="background-color: rgb(112, 112, 158)"><span><a href="app.php?i=0">all posts</a></span></div>';
+                $newContent += getInterest($interest);
                 $newContent += "<div class='picMask'>"+$postImage+"</div>";
                 $newContent += "<div><p><strong>"+$name+"</strong> <span class='timePosted'>just now</span><br/><span class='mainText'>"+$val+"</span></p></div>";
                 $newContent += "<div class='addComment'>Add a Comment</div><div class='breaker'></div>";
                 $("#posts").prepend($newContent);
+                if ($("#suggestion").attr("data-selected") == 1) {
+	            	$("#posts").attr('data-interest', 0);
+					$("#postButton").text("Post to All");
+	            }
+	            $("#suggestion").fadeOut();
             }else{
                 alert("technical difficulties, try posting again later");
             }
         });
     }
-    function getInterest(id){
-	    if(id == 0){
-		    return "general";
-	    }else if(id == 1){
-		    return "happening this weekend";
-	    }else if(id == 2){
-		    return "";
+    function getInterest($id){
+	    if($id == 0){
+		    return '<div class="topicTag" style="background-color: rgb(112, 112, 158)"><span><a href="app.php?i=0">all posts</a></span></div>';
+	    }else if($id == 1){
+		    return '<div class="topicTag" style="background-color: rgb(68,68,220)"><span><a href="app.php?i=1">news</a></span></div>';
+	    }else if($id == 2){
+		    return '<div class="topicTag" style="background-color: rgb(130,130,225)"><span><a href="app.php?i=2">events</a></span></div>';
+	    }else if($id == 3){
+		    return '<div class="topicTag" style="background-color: #9150B1"><span><a href="app.php?i=3">food & drink</a></span></div>';
+	    }else if($id == 4){
+		    return '<div class="topicTag" style="background-color: rgb(107, 174, 108)"><span><a href="app.php?i=4">sports</a></span></div>';
+	    }else if($id == 5){
+		    return '<div class="topicTag" style="background-color: rgb(195, 103, 168)"><span><a href="app.php?i=5">music</a></span></div>';
+	    }else if($id == 6){
+		    return '<div class="topicTag" style="background-color: rgb(120,160,210)"><span><a href="app.php?i=6">movies & tv</a></span></div>';
+	    }else if($id == 7){
+		    return '<div class="topicTag" style="background-color: rgb(40,130,175)"><span><a href="app.php?i=7">health & fitness</a></span></div>';
+	    }else if($id == 8){
+		    return '<div class="topicTag" style="background-color: rgb(71,185,195)"><span><a href="app.php?i=8">books</a></span></div>';
+	    }else if($id == 9){
+		    return '<div class="topicTag" style="background-color: rgb(10,155,170)"><span><a href="app.php?i=9">arts</a></span></div>';
+	    }else if($id == 10){
+		    return '<div class="topicTag" style="background-color: rgb(83, 205, 115)"><span><a href="app.php?i=10">shopping & fashion</a></span></div>';
+	    }else if($id == 11){
+		    return '<div class="topicTag" style="background-color: rgb(20,175,100)"><span><a href="app.php?i=11">books</a></span></div>';
+	    }else if($id == 12){
+		    return '<div class="topicTag" style="background-color: rgb(182,90,90)"><span><a href="app.php?i=12">open question</a></span></div>';
 	    }
     }
     

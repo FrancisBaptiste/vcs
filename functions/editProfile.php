@@ -1,6 +1,4 @@
 <?php
-#$c = mysql_connect("localhost", "vancitys_vcs", "golightly");
-#$db = mysql_selectdb("vancitys_vancitysocial");
 require("../includes/encryption.php");
 require("../includes/setup.php");
 
@@ -31,17 +29,12 @@ if ((($_FILES["file"]["type"] == "image/gif")
   if ($_FILES["file"]["error"] > 0){
     echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
   }else{
-    #echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-    #echo "Type: " . $_FILES["file"]["type"] . "<br>";
-    #echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-    #echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
 
     if (file_exists("images/profilePics/$id.jpg")){
       echo $_FILES["file"]["name"] . " already exists. ";
       move_uploaded_file($_FILES["file"]["tmp_name"], "../images/profilePics/$id.jpg");
       
     }else{
-     # move_uploaded_file($_FILES["file"]["tmp_name"], "images/profilePics/" . $_FILES["file"]["name"]);
       move_uploaded_file($_FILES["file"]["tmp_name"],
       "../images/profilePics/$id.jpg");
     }
@@ -57,7 +50,6 @@ if ((($_FILES["file"]["type"] == "image/gif")
   }
 }
 
-#$db->query("UPDATE users SET about='$about' WHERE id='$id'");
 
 $aboutQ = $db->query("SELECT about FROM users where id=$id");
 while($row = $aboutQ->fetch_assoc()){
@@ -70,12 +62,8 @@ if($about != $oldAbout){
 	$statement->execute();
 	
 	$postText = $about;
-
-	$statement = $db->prepare("INSERT INTO posts(uid, iid, text) values(?,42,?)");
-	$statement->bind_param("is", $id, $postText);
-	$statement->execute();
+	
 }
-
 
 
 if($emailNotifications == "emailNotifications"){
@@ -83,7 +71,6 @@ if($emailNotifications == "emailNotifications"){
 }else{
 	$db->query("UPDATE users SET email_notifications='0' WHERE id='$id'");
 }
-
 
 header('Location: '.SITE_URL . 'app.php');
 

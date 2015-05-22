@@ -25,23 +25,16 @@ $(function(){
     
     function createComment(){
 	    var $comment = $("#comment").val();
-        var $name = $("#guestName").val();
         var $userID = $("#sidebar").attr("data-user-id");
         if ($userID == "undefined") {
             $userID = 0;
         }
         
         var $storyID = $("#currentStory").attr("data-story-id");
-                
-        if ($name == "") {
-            alert("You must enter a guest name, or register as a Vancity Social user.");
-        }else if ($name == undefined) {
-            $name = "";
-        }
         
         $response = 0;
-        
-        $.post("functions/createNewsComment.php", {storyID:$storyID, comment:$comment, userID:$userID, guestName:$name, responseID:$response, thread: 0}, function(data){
+
+        $.post("functions/createNewsComment.php", {storyID:$storyID, comment:$comment, userID:$userID}, function(data){
             if(data != "false"){
                
                 $("#comment").val("");
@@ -50,11 +43,11 @@ $(function(){
                 
                 
                var newPost = '<div class="post" data-user-id="">';
-               newPost += "<div class='topicTag'><span><a href='app.php?i=41'>news comments</a></span></div>";
+               newPost += "<div class='topicTag' style='background-color: rgb(68,68,220);'><span><a href='app.php?i=1'>news</a></span></div>";
                newPost +=   '<div class="picMask"><img src="' + $("#profilePic").attr("src") + '"></div>';
                newPost +=   '<div>';
                
-               newPost += '<p><strong class="userRollover" data-user-id="">'+$("#userBlock h2").text().replace("(edit)", "")+'</strong> <span class="mainText"><span class="newsPost">commented on the story <a href="http://vancitysocial.ca/news.php?story='+$storyID+'">'+$thisTitle+'</a>...</span> '+$comment+'</span></p>';
+               newPost += '<p><strong class="userRollover" data-user-id="">'+$("#sidebar").attr("data-user-name")+'</strong> <span class="mainText"><span class="newsPost">commented on the story <a href="http://vancitysocial.ca/news.php?story='+$storyID+'">'+$thisTitle+'</a>...</span> '+$comment+'</span></p>';
                newPost +=  '</div><div class="breaker"></div></div>';
                
                $("#posts").prepend(newPost);

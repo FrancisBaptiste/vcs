@@ -25,43 +25,43 @@ function makeClickableLinks($text){
 function colorTag($tag){
 	switch($tag){
 		case 0:
-			return "rgb(112, 112, 158)"; #general
+			return "rgb(112, 112, 158)"; #all posts
 			break;
 		case 1:
-			return "rgb(68,68,220)"; #happening this weekend
+			return "rgb(68,68,220)"; #news
 			break;
 		case 2:
-			return "rgb(130,130,225)"; #open question
+			return "rgb(130,130,225)"; #events
 			break;
 		case 3:
-			return "rgb(135,25,190)"; #local news
+			return "#9150B1"; #food and drink
 			break;
 		case 4:
-			return "rgb(107, 174, 108)"; #restaurants
+			return "rgb(107, 174, 108)"; #sports
 			break;
 		case 5:
-			return "rgb(195, 103, 168)"; #live music
+			return "rgb(195, 103, 168)"; # music
 			break;
 		case 6:
-			return "rgb(120,160,210)"; #things to do
+			return "rgb(120,160,210)"; #movies & tv
 			break;
 		case 7:
-			return "rgb(40,130,175)"; #vancouver canucks
+			return "rgb(40,130,175)"; #health & fitness
 			break;
 		case 8:
-			return "rgb(71,185,195)"; #biking
+			return "rgb(71,185,195)"; #books
 			break;
 		case 9:
-			return "rgb(10,155,170)"; #television
+			return "rgb(10,155,170)"; #arts
 			break;
 		case 10:
-			return "rgb(83, 205, 115)"; #shopping
+			return "rgb(83, 205, 115)"; #shopping & fashion
 			break;
 		case 11:
-			return "rgb(20,175,100)"; #beer
+			return "rgb(20,175,100)"; #technology
 			break;
 		case 12:
-			return "rgb(182,90,90)"; #wine
+			return "rgb(182,90,90)"; #open question
 			break;
 		case 13:
 			return "rgb(155,115,115)"; #arts (currently set to biking)

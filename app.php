@@ -90,7 +90,7 @@ include("includes/functions.php");
 	                <h3 class="sectionHeader"><?php if($id!=null){ echo "All"; }?>Topics</h3>
 	                <ul id="allTopics">
 	                    <?php
-	                    $interestsQ = $db->query("SELECT * FROM interests LIMIT 30");
+	                    $interestsQ = $db->query("SELECT * FROM interests LIMIT 13");
 	                    while($iRow = $interestsQ->fetch_assoc() ){
 	                        $thisInterest = $iRow['interest'];
 	                        $thisInterestId = $iRow['id'];
@@ -139,8 +139,7 @@ include("includes/functions.php");
 				<div id="topicsDropDown" style="display:none;">
 					<ul id="dropDownTopics">
 						<?php
-						echo "<li><a href='".SITE_URL."app.php'>all</a></li>";
-	                    $interestsQ = $db->query("SELECT * FROM interests");
+	                    $interestsQ = $db->query("SELECT * FROM interests LIMIT 13");
 	                    while($iRow = $interestsQ->fetch_assoc() ){
 	                        $thisInterest = $iRow['interest'];
 	                        $thisInterestId = $iRow['id'];
@@ -153,7 +152,7 @@ include("includes/functions.php");
                 <div id="submit">
                     <textarea name="post" id="post" cols="25" rows="5">What's going on?</textarea>
                     <div id="postButton">Post to <?php echo ucwords($currentInterest); ?></div>
-                    <div id="suggestion">Suggested Topic: <span></span></div>
+                    <div id="suggestion" data-selected="0">Suggested Topic: <span></span></div>
                 </div>
                 
                 <div id="posts" data-interest="<?php echo $i; ?>" data-interest-name="<?php echo ucwords($currentInterest); ?>">
@@ -198,7 +197,7 @@ include("includes/functions.php");
                         	#look for urls and turn them into links before displaying post
 							$thisPost = makeClickableLinks($post->text);
 							
-							if($post->interest == 41){
+							if($post->interest == 1 && $post->news_id != 0){
 						    	$newsID = $post->news_id;
 						    	$getTitle = $db->query("SELECT title FROM news WHERE id=$newsID");
 						    	while($newsTitle = $getTitle->fetch_assoc() ){
@@ -295,9 +294,13 @@ include("includes/functions.php");
                 -------------------------------------------------------- -->
             
             <div id="right">
-                <h3 class='sectionHeader'>News</h3>
+                <h3 class='sectionHeader'>News <?php # if($i != 0 && $i != 1){ echo ucwords($currentInterest);} ?></h3>
                 <?php
-                $newsQ = $db->query("SELECT * FROM news ORDER BY id DESC LIMIT 10");
+	            if($i != 0 && $i != 1){
+		            $newsQ = $db->query("SELECT * FROM news WHERE topic=$i ORDER BY id DESC LIMIT 10");
+	            }else{
+		            $newsQ = $db->query("SELECT * FROM news ORDER BY id DESC LIMIT 10");
+	            }
                 while($news = $newsQ->fetch_assoc() ){
                     echo "<div class='newsCard'><img src='$news[image]' style='width:100%;' class='newsImage' data-news-id='".$news[id]."'/>";
                     #echo "<h4><a href='news.php?story=$news[id]'>" . stripslashes($news[title]) . "</a></h4>";
