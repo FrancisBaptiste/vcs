@@ -1,20 +1,24 @@
-                
-                              
+
+
                 <!-- used to be pointed at app.php -->
             	<?php
             	$currentPage = "";
             	$story = "";
             	if(strpos($_SERVER["PHP_SELF"], 'app') !== false){
             		$currentPage = "main";
-            	}else if(strpos($_SERVER["PHP_SELF"], 'news') !== false){
+            	}else if(strpos($_SERVER["PHP_SELF"], 'splash') !== false){
+	            	$currentPage = "splash";
+	            }else if(strpos($_SERVER["PHP_SELF"], 'redeem') !== false){
+	            	$currentPage = "redeem";
+	            }else if(strpos($_SERVER["PHP_SELF"], 'news') !== false){
             		$currentPage = "news";
             		if(isset($_GET['story'])){
 	            		$story = $_GET['story'];
             		}
             	}
-            	
+
             	?>
-                
+
 
                     <div id="loginBlock" <?php if($id != null){ echo "style='display:none;'"; }?>>
                         <form action="login.php" method="post">
@@ -30,10 +34,10 @@
                             </div>
                             <input type="submit" value="LOGIN" id="bigButton2"/>
                         </form>
-                        
+
                         <div id="inviteBtn">
                             or request an invitation
                         </div>
                     </div>
-                
-					
+
+

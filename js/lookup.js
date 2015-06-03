@@ -1,9 +1,9 @@
 $(function(){
-	
+
 	$("#userLookup").focus(function(){
 		$(this).val("");
 	});
-	
+
 	$("#userLookup").keyup(function(){
     	var thisText = $(this).val().toLowerCase();
     	if(thisText != ""){
@@ -22,23 +22,24 @@ $(function(){
         	});
     	}
 	});
-	
+
 	//seding the user a message
 	$(".sendUserMessage").click(function(){
       $("#messageUserMask").show();
       var passiveUser = $(this).parent().attr("data-friend-id");
-      $("#messageUserBox").attr("passive_user", passiveUser);
+      $("#messageUserBox").attr("data-passive-user", passiveUser);
       $("#submitDirect").show();
       $("#messsageAlert").hide();
    });
-   				   
+
+   /*
    $("#messageClose").click(function(){
       $("#messageAlert").hide();
    	  $("#submitDirect").show();
       $("#message").val("");
       $("#messageUserMask").hide();
    });
-   				   
+
    $("#messageButton").click(function(){
       $thisMess = $("#message").val();
       var pUser = $(this).parents("#messageUserBox").attr("passive_user");
@@ -50,8 +51,10 @@ $(function(){
 	      }
       });
    });
-   
-   $(".addToFriendlist").click(function(){				   		
+   */
+
+
+   $(".addToFriendlist").click(function(){
 	   var pUser = $(this).parent().attr("data-friend-id");
 	   var aUser = $("#sidebar").attr("data-user-id");
 	   var toHide = $(this).parent();
@@ -72,14 +75,14 @@ $(function(){
 	      }
        });
    });
-   
+
    $("#userFriendlist").on("mouseenter", "li", function(){
    		$(this).find(".removeFriend").show();
 	});
 	$("#userFriendlist").on("mouseleave", "li", function(){
    		$(this).find(".removeFriend").hide();
 	});
-   
+
    $("#userFriendlist").on("click", ".removeFriend", function(){
 	   var pUser = $(this).parent().attr("data-friend-id");
 	   var aUser = $("#sidebar").attr("data-user-id");
@@ -96,10 +99,10 @@ $(function(){
 	      }
        });
    });
-   
+
    $(".clearLookup").click(function(){
 	   $("#userLookup").val("");
 	   $(".userLine").fadeOut();
    });
-   
+
 });

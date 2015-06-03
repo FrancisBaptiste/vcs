@@ -1,8 +1,8 @@
 $food = ['food', 'dinner', 'lunch', 'breakfast', 'brunch', 'restaurant', 'restaurants', 'diner', 'cafe', 'bar', 'pub', 'drink', 'drinks', 'pint', 'brew', 'ate', 'cook', 'cooks', 'cookie', 'cookies', 'dessert', 'desserts', 'cooking', 'recipe', 'recipies', 'ingredients', 'sugar', 'salt', 'munch', 'munchie', 'munchies', 'chip', 'chips', 'tasty', 'delicious', 'food', 'chef', 'kitchen', 'chocolate', 'fruit', 'bread', 'baking', 'banana', 'pie', 'pies', 'cake', 'cakes', 'sweets', 'hungry', 'starving', 'eat', 'bite', 'meal', 'eat'];
-$sports = ['hockey', 'football', 'basketball', 'golf', 'tennis', 'sports', 'playoffs', 'nhl', 'MLB', 'NBA', 'playoff', 'penalty', 'shootout', 'OT', 'Canucks', 'Blackhawks'];
+$sports = ['hockey', 'football', 'basketball', 'golf', 'tennis', 'sports', 'playoffs', 'nhl', 'mlb', 'nba', 'playoff', 'penalty', 'shootout', 'ot', 'canucks', 'blackhawks', 'ranger', 'habs', 'flames'];
 $music = ['band', 'guitar', 'drums', 'concert', 'performance', 'singer', 'singing', 'sing', 'venue', 'music', 'tune', 'tunes', 'beat', 'dj', 'mixtape', 'listening', 'song', 'album'];
 $tv = ['tv', 'movie', 'movies', 'hbo', 'nbc', 'sitcom', 'theatre', 'theater', 'watching', 'watched'];
-$health = ['running', 'run', 'biking', 'bike', 'seawall', 'hike', 'hiking', 'trail', 'yoga', 'fitness', 'health', 'healthy', 'diet', 'dieting', 'exercise', 'crossfit', 'gym', 'workout', 'fitbit', 'situps', 'climbing', 'swim', 'swimming', 'climb', 'pool', 'golfing', 'snowboarding', 'skating'];
+$health = ['running', 'run', 'biking', 'bike', 'seawall', 'hike', 'hiking', 'trail', 'yoga', 'fitness', 'health', 'healthy', 'diet', 'dieting', 'exercise','exercising','exercizing', 'crossfit', 'gym', 'workout', 'fitbit', 'situps', 'climbing', 'swim', 'swimming', 'climb', 'pool', 'golfing', 'snowboarding', 'skating'];
 $books = ['read', 'reading', 'book', 'books', 'writer', 'author', 'library', 'magazine', 'textbook'];
 
 $(function(){
@@ -45,10 +45,10 @@ $(function(){
 	        }else if($books.indexOf($lastWord) !== -1){
 		        $("#suggestion").html("Suggested Topic: <span data-interest='8'>books</span> ").fadeIn();
 	        }
-	        	        
+
         }
     });
-    
+
     $("#main").on("click", "#suggestion span", function(){
 	    if($("#suggestion").attr("data-selected") == 1){
 		    $("#suggestion").fadeOut();
@@ -62,13 +62,13 @@ $(function(){
 			$("#suggestion").attr("data-selected", 1);
 	    }
 	});
-    
+
     $("#post").focus(function(){
         if ($(this).val() == "What's going on?") {
 			$(this).val("");
 		}
     });
-    
+
     function createPost(){
         $val = $("#post").val();
         $user = $("#sidebar").attr("data-user-id");
@@ -125,7 +125,7 @@ $(function(){
 		    return '<div class="topicTag" style="background-color: rgb(182,90,90)"><span><a href="app.php?i=12">open question</a></span></div>';
 	    }
     }
-    
+
     //functionality for the 'load more' button
     $("#loadMore").click(function(){
         $postIndex = $(".post:last-child").attr("data-post-id");
@@ -134,44 +134,44 @@ $(function(){
             $("#posts").append(data);
         });
     });
-    
-    
+
+
     $("#signupBtn").click(function(){
         $("#loginBlock").hide();
         $("#signupBlock").show();
     });
-	
-    
+
+
     $("#loginBtn").click(function(){
         $("#loginBlock").show();
         $("#signupBlock").hide();
     });
 
 
-    
+
 	$("#main").on("click", ".userRollover", function(){
 	    $(this).parent().parent().find(".userInformation").stop(true,true).fadeIn();
 	    $("#fullMask").fadeIn();
     });
     $("#main").on("click", ".picMask", function(){
-	    $(this).parent().find(".userInformation").stop(true,true).fadeIn();
+	    $(this).parent().find(".userInformation").first().stop(true,true).fadeIn();
 	    $("#fullMask").fadeIn();
     });
-    
+
 	$("#main").on("click", ".userInformation", function(){
 	    $(this).parent().parent().find(".userInformation").stop(true,true).fadeOut();
 	    $("#fullMask").fadeOut();
     });
-    
-    
+
+
     $("#fullMask").click(function(){
 	    $(".userInformation").fadeOut();
 	    $("#fullMask").fadeOut();
     });
-    
-    
+
+
 	$("#main").on("click", ".userButtonFriend", function(){
-	   var pUser = $(this).parents(".post").attr("data-user-id");
+	   var pUser = $(this).parents(".userInformation").attr("data-user-id");
 	   var aUser = $("#sidebar").attr("data-user-id");
 	   var toChange = $(this);
        $.post("functions/addFriend.php", {friend: pUser, user: aUser}, function(data){
@@ -184,31 +184,31 @@ $(function(){
 	      }
        });
    });
-    
+
     // this is cut and paste from the js on the news page
      /* send user message button */
    // this used to point to .userRollover
    //$(".userButtonMessage").click(function(){
 	$("#main").on("click", ".userButtonMessage", function(){
-		$("#messageNote").html("*Note: Your message will be sent directly to this user's inbox.<br/>The auto-filled text is to give the receiver context.");
+		$("#messageNote").html("*Note: Your message will be sent directly to this user's inbox.");
 		$("#messageHeaderText").text("Message User Directly");
 		$("#messageUserMask").show();
-		var passiveUser = $(this).parents(".post").attr("data-user-id");
+		var passiveUser = $(this).parents(".userInformation").attr("data-user-id");
 		$("#messageUserBox").attr("data-passive-user", passiveUser);
 		$("#submitDirect").show();
 		$("#messsageAlert").hide();
-		    
+
 		var thisComment = $(this).parents(".post").find(".mainText:first").text();
-		$("#message").val("In response to '"+thisComment+"'... ");
+		//$("#message").val("In response to '"+thisComment+"'... ");
    });
-   
+
    $("#messageClose").click(function(){
       $("#messageAlert").hide();
    	  $("#submitDirect").show();
       $("#message").val("");
       $("#messageUserMask").hide();
    });
-   
+
    $("#messageButton").click(function(){
       $thisMess = $("#message").val();
       var pUser = $(this).parents("#messageUserBox").attr("data-passive-user");
@@ -222,8 +222,26 @@ $(function(){
 	      }
       });
    });
-   
-   
+
+   $("#message").keypress(function(e){
+         if(e.which == 13){
+             if($("#message").val() != ""){
+                 $thisMess = $("#message").val();
+			      var pUser = $(this).parents("#messageUserBox").attr("data-passive-user");
+			      var aUser = $("#sidebar").attr("data-user-id");
+			      $.post("functions/directMessage.php", {passive: pUser, active: aUser, message:$thisMess}, function(data){
+				      if(data == "true"){
+					      $("#messageAlert").show();
+					      $("#submitDirect").hide();
+				      }else{
+					      alert("Sorry. Something is broken.");
+				      }
+			      });
+             }
+         }
+     });
+
+
    $("#topicsTop").click(function(){
 	   if($("#topicsDropDown").css("display") == "none"){
 		   $("#topicsDropDown").slideDown();
@@ -233,7 +251,7 @@ $(function(){
 		   $("#dropDownArrow").css("background-position", "10px, 0");
 	   }
    });
-    
+
 	$("#footerContact").click(function(){
 		$("#messageUserMask").show();
 		var passiveUser = 33;
@@ -241,18 +259,18 @@ $(function(){
 		$("#submitDirect").show();
 		$("#messsageAlert").hide();
 		$("#message").val("");
-		
+
 		$("#messageNote").html("If you have any questions, would like to report a bug, or just want to say hi, you can use this box to send us a direct message.");
 		$("#messageHeaderText").text("Contact Vancity Social");
 	});
-    
-	
+
+
 	$("#footerAbout").click(function(){
 		$("#fullScreen").fadeIn(function(){
 			$("#aboutBox").fadeIn();
 		});
 	});
-	
+
 	if($("#footerForgot")){
 		$("#footerForgot").click(function(){
 			$("#fullScreen").fadeIn(function(){
@@ -260,25 +278,25 @@ $(function(){
 			});
 		});
 	}
-	
+
 	$("#aboutClose").click(function(){
 		$("#aboutBox").fadeOut(function(){
 			$("#fullScreen").fadeOut();
 		});
 	});
-	
+
 	$("#forgotClose").click(function(){
 		$("#forgotBox").fadeOut(function(){
 			$("#fullScreen").fadeOut();
 		});
 	});
-	
+
 	$("#editClose").click(function(){
 		$("#editBox").fadeOut(function(){
 			$("#fullScreen").fadeOut();
 		});
 	});
-	
+
 	$("#fullScreen").click(function(){
 		if($("#newsBox").css("display") != "none"){
 			$("#newsBox").fadeOut(function(){
@@ -292,9 +310,13 @@ $(function(){
 			$("#editBox").fadeOut(function(){
 				$("#fullScreen").fadeOut();
 			});
+		}else if($("#welcome").css("display") != "none"){
+			$("#welcome").slideUp(function(){
+				$("#fullScreen").fadeOut();
+			});
 		}
 	});
-	
+
 	$("#loginButton").click(function(){
 		$("#signupBlock").hide();
 		$("#loginBlock").show();
@@ -302,13 +324,13 @@ $(function(){
 			$("#invitationBox").fadeIn();
 		});
 	});
-	
+
 	$("#inviteBtn").click(function(){
 		$("#loginBlock").slideUp(function(){
 			$("#signupBlock").slideDown();
 		});
 	});
-	
+
 	$(".newsImage, .newsTitle").click(function(){
 		var newsID = $(this).attr("data-news-id");
 		//var thisY = $(this).offset().top;
@@ -320,8 +342,8 @@ $(function(){
 			$("#newsBox").fadeIn();
 		});
 	});
-	
-	
+
+
 	//for the invitation request
 	$("#requestInviteBtn").click(function(){
 		if ($("#nameRequest").val() == "" || $("#emailRequest").val() == "" || $("#passwordRequest").val() == "" ){
@@ -346,18 +368,20 @@ $(function(){
 			});
 		}
 	});
-	
+
 	$(".top-menu span").click(function(){
 		$("#fullScreen").fadeIn(function(){
 			$("#editBox").fadeIn();
 		});
 	});
-	
-	
+
+
 	$("#cancelEdit").click(function(){
         $("#editBox").fadeOut(function(){
 			$("#fullScreen").fadeOut();
 		});
     });
-    
+
+
+
 });

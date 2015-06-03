@@ -39,29 +39,28 @@ $conversationsDecoded = json_decode($conversationsAPI);
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/messages.js"></script>
-        <script type="text/javascript" src="js/news_popup.js"></script>
         <script type="text/javascript" src="js/lookup.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-    </head>     
-    
+    </head>
+
     <body>
     	<?php include_once("analyticstracking.php") ?>
         <div id="wrapper">
-            
+
             <div id="mainHeader">
                 <img src="images/logo2.png"/>
-                <?php if($id == null){ 
-	                echo "<div id='loginButton'>Log in / Sign up</div>"; 
+                <?php if($id == null){
+	                echo "<div id='loginButton'>Log in / Sign up</div>";
 	            }else{
 		            include("includes/top-menu.php");
 		        }
 	            ?>
             </div>
-                        
+
             <div id="sidebar" data-user-id="<?php echo $id; ?>" data-user-name="<?php echo $name;?>" data-user-pic="<?php echo $postImage;?>">
-                
+
                 <?php #include("includes/profile.php"); ?>
-                
+
                 <div id="allConversations">
                 	<h3 class="sectionHeader">Conversations</h3>
                 	<ul id="userFriendlist">
@@ -81,13 +80,13 @@ $conversationsDecoded = json_decode($conversationsAPI);
                 		?>
                 	</ul>
                 </div>
-                                
+
             </div>
             <!-- end of sidebar -->
-            
-            
+
+
             <!-- ------------------------------------ start of the Main Content --------------------------------- -->
-            
+
             <?php
     		foreach($conversationsDecoded as $conversation){
     			if($conversation === reset($conversationsDecoded)){
@@ -95,7 +94,7 @@ $conversationsDecoded = json_decode($conversationsAPI);
     			}
     		}
     		?>
-            
+
             <div id="main">
             	<h3 class='sectionHeader'>Messages</h3>
 		<div id="allMessages" data-conversation-id="<?php if(isset($_GET['conversation'])){echo $_GET['conversation']; }else{ echo $topConversation; } ?>">
@@ -109,49 +108,49 @@ $conversationsDecoded = json_decode($conversationsAPI);
 			}
 		    $messagesAPI = file_get_contents($messagesURL);
 		    $messagesDecoded = json_decode($messagesAPI);
-		    
+
 		    foreach($messagesDecoded as $message){
 		    ?>
-		    
+
 		    <div class="message post">
 			<?php
 			    echo "<div class='picMask'><img src='". $message->user->image ."'/></div>";
 			?>
 			<p><strong><?php echo $message->user->name; ?></strong> <?php echo stripslashes($message->text); ?> <em><?php echo $message->date; ?></em></p>
 		    </div>
-		    
+
 		    <?php
 		    }
 		    ?>
                 </div> <!-- end of #allMesssages -->
-		
+
 				<div id="submit">
-                    <textarea name="message" id="message" class="inboxMess" cols="25" rows="5"></textarea>
-                    <div id="messageButton">Send Message</div>
+                    <textarea name="messageInbox" id="messageInbox" class="inboxMess" cols="25" rows="5"></textarea>
+                    <div id="messageButtonInbox">Send Message</div>
                 </div>
-		
-		
-		
+
+
+
             </div>
-            
-				
+
+
 				<!-- -------------------------------------------------------------
                 Start of news area
                 -------------------------------------------------------- -->
-            
+
             <div id="right">
                 <?php include("includes/lookup.php"); ?>
             </div>
-				
-            
+
+
         </div> <!-- end of wrapper -->
-        
-        
+
+
         <?php include("includes/footer.php"); ?>
-        
-        
+
+
     </body>
-    
+
 </html>
 
 <?php

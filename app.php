@@ -63,29 +63,32 @@ include("includes/functions.php");
         <script type="text/javascript" src="js/favorites.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/news_popup.js"></script>
-    </head>     
-    
+        <?php
+	    if(isset($_GET['welcome'])){ echo "<link href='http://fonts.googleapis.com/css?family=Roboto:700,300,400' rel='stylesheet' type='text/css'>"; }
+	    ?>
+    </head>
+
     <body>
     	<?php include_once("analyticstracking.php") ?>
-    	
+
     	<div id="fullMask"></div>
-    	
+
         <div id="wrapper">
-            
+
             <div id="mainHeader">
                 <img src="images/logo2.png"/>
-                <?php if($id == null){ 
+                <?php if($id == null){
 	                echo "<div id='loginButton'>Member log in</div>";
 	                echo "<div id='buttonDivide'> | </div>";
-	                echo "<div id='redeemButton'>Redeem invite code</div>";
+	                echo "<div id='redeemButton'><a href='redeem.php'>Redeem invite code</a></div>";
 	            }else{
 		            include("includes/top-menu.php");
 		        }
 	            ?>
             </div>
-            
-            
-            <div id="sidebar" data-user-id="<?php echo $id; ?>" data-user-name="<?php echo $name;?>" data-user-pic="<?php echo $postImage;?>">                
+
+
+            <div id="sidebar" data-user-id="<?php echo $id; ?>" data-user-name="<?php echo $name;?>" data-user-pic="<?php echo $postImage;?>">
                 <div>
 	                <h3 class="sectionHeader"><?php if($id!=null){ echo "All"; }?>Topics</h3>
 	                <ul id="allTopics">
@@ -108,12 +111,12 @@ include("includes/functions.php");
 	                </ul>
                 </div>
             </div>
-            
-            
+
+
             <!-- ------------------------------------ start of the Main Content --------------------------------- -->
-            <div id="main">            	
+            <div id="main">
             	<?php echo $messageNotifications; # declared in includes/checkInbox.php ?>
-				
+
 				<?php
 				$unreadCount = 0;
 				foreach($notifications as $n){
@@ -121,11 +124,11 @@ include("includes/functions.php");
                     	$unreadCount++;
                     }
                 }
-				
+
 				if($unreadCount > 0){
 					echo "<div id='notificationsMessage'>";
 					echo "<h3 class='sectionHeader'>You Have New Notifications!</h3>";
-					
+
                     foreach($notifications as $n){
                         if($n->notification_read == 0){
                             echo "<div class='notificationAlert notification' data-fetch-pid='$n->post_id' data-nid='$n->id'><span>$n->commenter_name</span> commented on something you posted.</div>";
@@ -134,7 +137,7 @@ include("includes/functions.php");
 					echo "</div>";
 				}
 				?>
-            
+
         		<h3 id="topicsTop" class='sectionHeader'>Current Topic: <?php echo ucwords($currentInterest); ?><span id="dropDownArrow"></span></h3>
 				<div id="topicsDropDown" style="display:none;">
 					<ul id="dropDownTopics">
@@ -148,20 +151,20 @@ include("includes/functions.php");
 	                    ?>
 					</ul>
 				</div>
-                
+
                 <div id="submit">
                     <textarea name="post" id="post" cols="25" rows="5">What's going on?</textarea>
                     <div id="postButton">Post to <?php echo ucwords($currentInterest); ?></div>
                     <div id="suggestion" data-selected="0">Suggested Topic: <span></span></div>
                 </div>
-                
+
                 <div id="posts" data-interest="<?php echo $i; ?>" data-interest-name="<?php echo ucwords($currentInterest); ?>">
-                
+
                 <?php
-                foreach($contentDecoded as $post){    
+                foreach($contentDecoded as $post){
                 ?>
                     <div class="post" data-post-id="<?php echo $post->id; ?>" data-user-id="<?php echo $post->user_id ?>">
-	                    
+
 	                    <?php
                     	$postInterest = $post->interest;
                         $getInterest = $db->query("SELECT * FROM interests WHERE id=$postInterest");
@@ -170,13 +173,17 @@ include("includes/functions.php");
                         }
                     	?>
                     	<div class="topicTag" style="background-color: <?php echo colorTag($postInterest);?>"><span><a href="app.php?i=<?php echo $postInterest; ?>"><?php echo $thisPostInterest; ?></a></span></div>
-	                    
+
                         <?php
                             echo "<div class='picMask'><img src='". $post->user_image ."'/></div>";
                         ?>
+
+
+
                         <div>
-                        	<div class='userInformation'>
-                        		<img src='<?php echo $post->user_image; ?>'/>
+
+	                        <div class='userInformation' data-user-id="<?php echo $post->user_id ?>">
+	                    		<img src='<?php echo $post->user_image; ?>'/>
 								<div>
 									<span><?php echo $post->name; ?></span>
 									<p><span>About: </span><?php echo $post->user_about; ?></p>
@@ -187,34 +194,34 @@ include("includes/functions.php");
 										echo "<div class='userButton userButtonFriend'>Add As Friend</div>";
 									}
 									?>
-									
+
 									<div class='userButton userButtonMessage'>Send Message</div>
 									<div class='actionMessage'></div>
 								</div>
-                        	</div>
-                        	
+	                    	</div>
+
                         	<?php
                         	#look for urls and turn them into links before displaying post
 							$thisPost = makeClickableLinks($post->text);
-							
+
 							if($post->interest == 1 && $post->news_id != 0){
 						    	$newsID = $post->news_id;
 						    	$getTitle = $db->query("SELECT title FROM news WHERE id=$newsID");
 						    	while($newsTitle = $getTitle->fetch_assoc() ){
 							    	$thisTitle = $newsTitle['title'];
 						    	}
-						    	
+
 							    $thisPost = "<span class='newsPost'>commented on the story <a class='newsTitle' data-news-id='$newsID'>$thisTitle</a>...</span> $thisPost";
 
-							    
+
 						    }else if($post->interest == 42){
 								$thisPost = "<span class='newsPost'>updated my 'about' blurb to...</span> $thisPost";
 							}
-							
+
                         	?>
-                        	                        	
+
 	                        <p>
-		                        <strong class='userRollover' data-user-id='<?php echo $post->user_id; ?>'><?php echo $post->name; ?></strong> 
+		                        <strong class='userRollover' data-user-id='<?php echo $post->user_id; ?>'><?php echo $post->name; ?></strong>
 		                        <?php
 		                        	$postTime = strtotime($post->date);
 									include("includes/timeFormat.php");
@@ -224,9 +231,9 @@ include("includes/functions.php");
 		                        <span class='mainText'><?php echo $thisPost; ?></span>
 		                    </p>
                         </div>
-                        
+
                         <?php
-                        
+
                         if(count($post->comments)>0){
                         	$commentCount = 0;
                         	$commentLimit = 4;
@@ -239,16 +246,16 @@ include("includes/functions.php");
                             	}
                                 echo "<div class='picMask'><img src='".$comment->image."'/></div>";
                                 $thisComment = makeClickableLinks($comment->text);
-                                
+
                                 $postTime = strtotime($comment->date);
-                                
+
                                 include("includes/timeFormat.php");
-                                
+
                                 echo "<p><strong class='userRollover'>".$comment->user_name."</strong> <span class='timePosted'>$postTime</span><br/> <span class='mainText'>".$thisComment."</span></p>";
-                                
-                                
+
+
                                 #user pop ups for the comments
-                                echo "<div class='userInformation'>";
+                                echo "<div class='userInformation' data-user-id='$comment->user_id'>";
 	                        	echo "<img src='$comment->image'/>";
 								echo "	<div>";
 								echo "		<span>$comment->user_name</span>";
@@ -263,36 +270,36 @@ include("includes/functions.php");
 								echo "	</div>";
 	                        	echo "</div>";
 	                        	#end of user popups for the comments
-	                        	
+
 	                        	echo "</div>"; #end of comment div
-                                
+
                             }
                             if($commentCount > $commentLimit){
 	                            echo "<div class='viewAllComments'>View All Comments ($commentCount)</div>";
                             }
                         }
-                        
+
                         echo "<div class='addComment'>Add a Comment</div>";
-                        
+
                         ?>
-                        
+
                         <div class="breaker"></div>
                     </div>
-                    
+
                 <?php
                 }
                 ?>
                 </div>
-                
+
                 <div id="loadMore">Load More</div>
-                
+
             </div>
-            
-            
+
+
             <!-- -------------------------------------------------------------
                 Start of news area
                 -------------------------------------------------------- -->
-            
+
             <div id="right">
                 <h3 class='sectionHeader'>News <?php # if($i != 0 && $i != 1){ echo ucwords($currentInterest);} ?></h3>
                 <?php
@@ -307,13 +314,18 @@ include("includes/functions.php");
                     echo "<h4 class='newsTitle' data-news-id='".$news[id]."'>" . stripslashes($news[title]) . "</h4></div>";
                 }
                 ?>
-            </div>            
+            </div>
         </div> <!-- end of wrapper -->
-        
-        
+
+
 		<?php include("includes/footer.php"); ?>
-		
-		
+
+		<?php
+		if(isset($_GET['welcome'])){
+			include("includes/welcome.php");
+		}
+		?>
+
     </body>
-    
+
 </html>

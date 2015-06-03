@@ -33,7 +33,7 @@ if(isset($_GET['interest'])){
 	while($row = $friendQ->fetch_assoc() ){
 		$friendArray = $row['friendlist'];
 	}
-	
+
 	if(isset($_GET['postIndex'])){
         $q = $db->query("SELECT * FROM posts WHERE id < $postIndex AND uid IN(" . $friendArray . ") ORDER BY id DESC LIMIT $limit");
     }else{
@@ -58,12 +58,12 @@ $allPosts = array();
 
 
 while($row = $q->fetch_assoc() ){
-    
+
     $allComments = array();
-    
+
     $uid = $row['uid'];
     $pid = $row['id'];
-    
+
     $author = $db->query("SELECT id, name, image, about FROM users WHERE id=$uid");
     while($aRow = $author->fetch_assoc() ){
         $aId = $aRow['id'];
@@ -73,11 +73,11 @@ while($row = $q->fetch_assoc() ){
         if( $aImage == "" ){
 	        $aImage = 'http://vancitysocial.ca/images/noProfile.jpg';
         }
-        
+
     }
-    
+
     $thisText = $row['text'];
-    
+
     #if it's a comment on a news story, create special text
     /*
     if($row['iid'] == 41){
@@ -90,7 +90,7 @@ while($row = $q->fetch_assoc() ){
 	    $thisText = "<span class='newsPost'>commented on the story <a href='" . "http://vancitysocial.ca/news.php?story=" . $row['news_id'] . "'>$thisTitle</a>...</span> $thisText";
     }
     */
-    
+
     $post = array(
         "id" => $pid,
         "text" => $thisText,
@@ -103,11 +103,11 @@ while($row = $q->fetch_assoc() ){
         "interest" => $row['iid'],
         "news_id" => $row['news_id']
     );
-    
+
     ### beginning of comments section
-    
+
     $c = $db->query("SELECT * FROM comments WHERE pid=$pid");
-    
+
     while($cRow=$c->fetch_assoc() ){
         $cuid = $cRow['uid'];
         $comment = $cRow['text'];
@@ -120,24 +120,25 @@ while($row = $q->fetch_assoc() ){
             if($cImage == ""){
 	            $cImage = 'http://vancitysocial.ca/images/noProfile.jpg';
             }
-            
+
             $comment = array(
                 "text" => $comment,
                 "user_name" => $commentator,
+                "user_id" => $cuid,
                 "user_about" => $aboutCommentator,
                 "image" => $cImage,
                 "date" => $date
             );
-            
+
             array_push($allComments, $comment);
         }
         //echo " --- $commentator said ... $comment at $date <br/>";
-        
+
     }
-    
+
     $post['comments'] = $allComments;
     array_push($allPosts, $post);
-    
+
 }
 
 header('Content-Type: application/json');

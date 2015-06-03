@@ -3,7 +3,7 @@
 </div>
 
 <!-- popup for the message user box -->
-		
+
 <div id="messageUserMask">
 	<div id="messageUserBox">
 		<div id="messageHeader">
@@ -17,10 +17,10 @@
 			echo 'You can only send a direct message to a user if you are logged in.';
 			}else{
 			?>
-			<p id="messageNote">*Note: Your message will be sent directly to this user's inbox.<br/>The auto-filled text is to give the receiver context.</p>
+			<p id="messageNote">*Note: Your message will be sent directly to this user's inbox.</p>
 			<textarea id="message"></textarea>
 			<div id="messageButton">Send Message</div>
-								
+
 			<?php } ?>
 		</div>
 	</div>
@@ -54,6 +54,9 @@
         <form action="functions/editProfile.php" method="post" enctype="multipart/form-data">
             Change user image:
             <input type="file" name="file" id="file"><br/><br/>
+            Change User Name:<br/>
+            <input type="text" name="username" value="<?php echo $name; ?>" id="usernameChange"/>
+            <br/><br/>
             A bit about yourself (250 characters):
             <textarea maxlength="250" name="about" rows="8" id="aboutBlurb"><?php echo $about; ?></textarea>
             <input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -67,7 +70,7 @@
 </div>
 
 <div id="fullScreen"></div>
-		
+
 <?php include("includes/aboutBox.php"); ?>
 
 

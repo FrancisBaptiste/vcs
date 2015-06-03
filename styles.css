@@ -27,6 +27,10 @@ body{
     -moz-transition: 300ms all;
     transition: 300ms all;
 }
+#redeemButton a{
+	text-decoration: none;
+	color: rgb(58, 136, 231);
+}
 #buttonDivide{
 	float:right;
 	font-size: 16px;
@@ -81,6 +85,7 @@ ul{
     position:relative;
     top: 4px;
     left: 6px;
+    z-index: -1;
 }
 
 #sidebar h2{
@@ -109,7 +114,7 @@ ul{
 #right h3{
     margin-bottom: 15px;
 }
-#sidebar ul{	
+#sidebar ul{
     margin-top: 0px;
     padding-bottom: 15px;
 }
@@ -216,6 +221,8 @@ ul{
 	margin-top: 20px;
 	width: 300px;
 	margin-left: -150px;
+	position: fixed;
+	top: 100px;
 }
 #invitationBox img{
 	margin: 0 0 10px 40px;
@@ -322,7 +329,7 @@ ul{
     margin-bottom: 5px;
 }
 
-#postButton, #messageButton, #commentButton, .responseButton, .messageButton, #commentPostButton{
+#postButton, #messageButton, #messageButtonInbox, #commentButton, .responseButton, .messageButton, #commentPostButton{
     background:white;
     color: #3a88e7;
     padding: 10px;
@@ -335,7 +342,7 @@ ul{
 	-moz-transition: all 500ms;
 }
 
-#postButton:hover, #messageButton:hover, #commentButton:hover, .responseButton:hover, .messageButton:hover, #commentPostButton:hover{
+#postButton:hover, #messageButton:hover, #messageButtonInbox:hover, #commentButton:hover, .responseButton:hover, .messageButton:hover, #commentPostButton:hover{
 	background-color: #3a88e7;
 	color: white;
 }
@@ -476,11 +483,12 @@ ul{
 	color:black;
 	display:block;
 	padding: 20px;
-	background: #f2f2f2;
+	background: white;
 	margin-bottom: 2px;
+	border: 1px solid white;
 }
 #messageNotifications a:hover{
-	background: #EEE;
+	border: 1px solid #3a88e7;
 }
 
 .notificationAlert{
@@ -581,7 +589,7 @@ ul{
 	padding-left: 5px;
 }
 #newsComments .comment.threaded{
-    
+
 }
 
 #newsComments .comment em{
@@ -764,7 +772,7 @@ ul{
 	border-left: none !important;
 }
 
-#message.inboxMess {
+#messageInbox.inboxMess {
 	width: 595px;
 }
 
@@ -1139,9 +1147,14 @@ ul{
 }
 
 #aboutBlurb{
-	border: 1px solid EEE;
+	border: 1px solid #CCC;
 	margin-left: -2px;
 	width: 298px;
+}
+#usernameChange{
+	width: 288px;
+	border: 1px solid #CCC;
+	padding: 5px;
 }
 .editUserBtn{
 	background:white;
@@ -1164,9 +1177,10 @@ ul{
 	font-size: 12px;
 }
 
+
 .passwordResetInput{
 	width: 200px;
-	padding: 5px;	
+	padding: 5px;
 }
 
 #suggestion{
@@ -1187,7 +1201,7 @@ ul{
 
 #splash-body{
 	margin: 10px 0 0 0;
-	background: url(images/blur8.jpg) no-repeat center center fixed;
+	background: url(images/blur9.jpg) no-repeat center center fixed;
 }
 #splash-body #loginButton, #splash-body #redeemButton{
 	margin-top: 55px;
@@ -1208,7 +1222,7 @@ ul{
 	height: 550px;
 	background: white;
 	margin:0;
-	background: url(images/splash6.jpg) no-repeat center center;
+	background: url(images/splash8.jpg) no-repeat center center;
 	background-size:cover;
 }
 #splash h2{
@@ -1233,6 +1247,14 @@ ul{
 	margin: 0 auto;
 	padding: 0 40px;
 }
+#splash-features h4{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 2em;
+	color: #3a88e7;
+	text-align: center;
+}
 .splash-feature-block{
 	width: 33.3333%;
 	float: left;
@@ -1256,7 +1278,6 @@ ul{
 	padding-bottom: 50px;
 }
 #splash-invite{
-	height: 600px;
 	text-align: center;
 }
 #splash-invite a{
@@ -1272,6 +1293,8 @@ ul{
 	float: left;
 	height: 300px;
 	box-shadow: 10px 0 10px #CCC;
+	-webkit-box-shadow: 10px 0 10px #CCC;
+	-moz-box-shadow: 10px 0 10px #CCC;
 }
 .splash-50-inside{
 	padding: 60px;
@@ -1279,15 +1302,149 @@ ul{
 }
 .left-50{
 	background-color: white;
-	
+
 }
 .right-50{
 	background-color: #EFEFEF;
-	
+
 }
 
 #splash-footer{
 	background: #3a88e7;
-	height: 150px;
 	clear:both;
+	padding: 40px;
+	font-size: 11px;
+}
+
+#splash-footer ul{
+	margin: 0;
+}
+#splash-footer ul li{
+	display: inline-block;
+	color: white;
+	margin-left: 20px;
+}
+#splash-footer a{
+	color:white;
+	text-decoration: none;
+}
+#splash-footer a:hover{
+	text-decoration: underline;
+}
+#copyright{
+	float: right;
+	color: white;
+}
+
+
+/* --------- styles for the redeem page --------------- */
+
+
+
+#redeem{
+	width: 100%;
+	height: 550px;
+	background: white;
+	margin:0;
+	background: url(images/redeem.jpg) no-repeat center center;
+	background-size:cover;
+}
+#redeem h2{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 2.5em;
+	color: #3a88e7;
+	padding-top: 30px;
+	margin-bottom: 20px;
+}
+#redeemForm label{
+	color: #555;
+	font-size: 0.9em;
+}
+#redeemForm input{
+	border: none;
+	padding: 10px 0;
+	margin-bottom: 20px;
+	width: 390px;
+	padding-left: 10px;
+}
+#redeemInner{
+	width: 400px;
+	margin: 0 auto;
+}
+#submitCode{
+	background: #3a88e7;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	width: 400px !important;
+}
+
+#welcome{
+	display:none;
+	background: white;
+	padding: 40px;
+	width: 400px;
+	position: fixed;
+	top: 80px;
+	left: 50%;
+	margin-left: -240px;
+	z-index: 500;
+}
+#welcome h4{
+	color: #3a88e7;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 2em;
+	margin: 0 0 20px 0;
+}
+#welcomeParagraphs{
+	margin-bottom: 40px;
+}
+#welcome p{
+	margin-bottom: 10px;
+	color: #444;
+	font-size: 0.9em;
+}
+/*
+#welcome img{
+	box-shadow: 0 0 10px #CCC;
+	-webkit-box-shadow: 0 0 10px #999;
+	-moz-box-shadow: 0 0 10px #CCC;
+}*/
+#welcome p span{
+	color: black;
+}
+#welcome #getStarted, .nextWelcome, .nextFinished{
+	cursor:pointer;
+	background: #3a88e7;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 1.25em;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	-webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    transition: 300ms all;
+    border: 1px solid #3a88e7;
+}
+#welcome #getStarted:hover, .nextWelcome:hover, .nextFinished:hover{
+	background: white;
+	color: #3a88e7;
+}
+#slider{
+	width: 400px;
+	overflow: hidden;
+}
+#sliderInner{
+	width: 2000px;
+}
+.slide{
+	width: 400px;
+	float:left;
 }

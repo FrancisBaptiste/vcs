@@ -19,39 +19,39 @@ while( $row = $check1->fetch_assoc() ){
 }
 
 if( isset($conID) && $conID != 0 ){
-	
+
 	#insert message into messages using $conID
 	$statement = $db->prepare("INSERT INTO messages (message, conversation_id, user_id) values(?, ?, ?)");
 	$statement->bind_param('sii', $message, $conID, $activeUser);
 	$statement->execute();
-	
+
 	if($statement){
 		echo "true";
 		$inbox = $db->query("UPDATE conversations SET inbox=1 WHERE id=$conID");
 		$userInbox = $db->query("UPDATE users SET inbox=1 WHERE id=$passiveUser");
 	}
-	
+
 }else{
-	
+
 	#create a new conversation
 	#then insert message into messages using the newly created #conID
-	
+
 	#$thisInsert = $db->query("INSERT INTO conversations ('person_a', 'person_b', 'exchange_count', 'inbox') values('$activeUser', '$passiveUser', '1', '1')");
-	
+
 	$ex = 1;
 	$in = 1;
-	
+
 	$thisInsert = $db->prepare("INSERT INTO conversations (person_a, person_b, exchange_count, inbox) values(?, ?, ?, ?)");
 	$thisInsert->bind_param('iiii', $activeUser, $passiveUser, $ex, $in);
 	$thisInsert->execute();
-	
+
 	if($thisInsert){
 		$newConID = $thisInsert->insert_id;
-			
+
 		$statement = $db->prepare("INSERT INTO messages (message, conversation_id, user_id) values(?, ?, ?)");
 		$statement->bind_param('sii', $message, $newConID, $activeUser);
 		$statement->execute();
-		
+
 		if($statement){
 			echo "true";
 			$userInbox = $db->query("UPDATE users SET inbox=1 WHERE id=$passiveUser");
@@ -59,8 +59,8 @@ if( isset($conID) && $conID != 0 ){
 	}else{
 		echo "insert didn't work";
 	}
-	
-	
+
+
 }
 
 /*
