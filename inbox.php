@@ -111,16 +111,15 @@ $conversationsDecoded = json_decode($conversationsAPI);
 
 		    foreach($messagesDecoded as $message){
 		    ?>
-
-		    <div class="message post">
-			<?php
-			    echo "<div class='picMask'><img src='". $message->user->image ."'/></div>";
-			?>
-			<p><strong><?php echo $message->user->name; ?></strong> <?php echo stripslashes($message->text); ?> <em><?php echo $message->date; ?></em></p>
-		    </div>
+			    <div class="message post">
+				<?php
+				    echo "<div class='picMask'><img src='". $message->user->image ."'/></div>";
+				?>
+				<p><strong><?php echo $message->user->name; ?></strong> <?php echo stripslashes($message->text); ?> <em><?php echo $message->date; ?></em></p>
+			    </div>
 
 		    <?php
-		    }
+		    } # end of foreach
 		    ?>
                 </div> <!-- end of #allMesssages -->
 

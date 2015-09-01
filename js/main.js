@@ -1,5 +1,5 @@
 $food = ['food', 'dinner', 'lunch', 'breakfast', 'brunch', 'restaurant', 'restaurants', 'diner', 'cafe', 'bar', 'pub', 'drink', 'drinks', 'pint', 'brew', 'ate', 'cook', 'cooks', 'cookie', 'cookies', 'dessert', 'desserts', 'cooking', 'recipe', 'recipies', 'ingredients', 'sugar', 'salt', 'munch', 'munchie', 'munchies', 'chip', 'chips', 'tasty', 'delicious', 'food', 'chef', 'kitchen', 'chocolate', 'fruit', 'bread', 'baking', 'banana', 'pie', 'pies', 'cake', 'cakes', 'sweets', 'hungry', 'starving', 'eat', 'bite', 'meal', 'eat'];
-$sports = ['hockey', 'football', 'basketball', 'golf', 'tennis', 'sports', 'playoffs', 'nhl', 'mlb', 'nba', 'playoff', 'penalty', 'shootout', 'ot', 'canucks', 'blackhawks', 'ranger', 'habs', 'flames'];
+$sports = ['hockey', 'football', 'basketball', 'golf', 'tennis', 'sports', 'playoffs', 'nhl', 'mlb', 'nba', 'playoff', 'penalty', 'shootout', 'ot', 'canucks', 'blackhawks', 'ranger', 'habs', 'flames', 'fifa'];
 $music = ['band', 'guitar', 'drums', 'concert', 'performance', 'singer', 'singing', 'sing', 'venue', 'music', 'tune', 'tunes', 'beat', 'dj', 'mixtape', 'listening', 'song', 'album'];
 $tv = ['tv', 'movie', 'movies', 'hbo', 'nbc', 'sitcom', 'theatre', 'theater', 'watching', 'watched'];
 $health = ['running', 'run', 'biking', 'bike', 'seawall', 'hike', 'hiking', 'trail', 'yoga', 'fitness', 'health', 'healthy', 'diet', 'dieting', 'exercise','exercising','exercizing', 'crossfit', 'gym', 'workout', 'fitbit', 'situps', 'climbing', 'swim', 'swimming', 'climb', 'pool', 'golfing', 'snowboarding', 'skating'];
@@ -382,6 +382,13 @@ $(function(){
 		});
     });
 
-
+	// this function changes the links on the notifications for the INBOX
+	if( $(window).width() < 800 ){
+		$(".messNot a").each(function(){
+			var link = $(this).attr("href");
+			var newLink = link.replace("inbox.php", "mobile-inbox.php");
+			$(this).attr("href", newLink);
+		});
+	}
 
 });

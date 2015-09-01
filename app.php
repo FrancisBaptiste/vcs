@@ -57,6 +57,7 @@ include("includes/functions.php");
     	<title>Vancity Social</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="styles-mobile.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/notifications.js"></script>
         <script type="text/javascript" src="js/comments.js"></script>
@@ -158,6 +159,10 @@ include("includes/functions.php");
                     <div id="suggestion" data-selected="0">Suggested Topic: <span></span></div>
                 </div>
 
+				<!--
+				--------------------------------	Start of all Post Content  ---------------------------
+					-->
+
                 <div id="posts" data-interest="<?php echo $i; ?>" data-interest-name="<?php echo ucwords($currentInterest); ?>">
 
                 <?php
@@ -174,11 +179,7 @@ include("includes/functions.php");
                     	?>
                     	<div class="topicTag" style="background-color: <?php echo colorTag($postInterest);?>"><span><a href="app.php?i=<?php echo $postInterest; ?>"><?php echo $thisPostInterest; ?></a></span></div>
 
-                        <?php
-                            echo "<div class='picMask'><img src='". $post->user_image ."'/></div>";
-                        ?>
-
-
+                        <div class="picMask"><img src="<?php echo $post->user_image; ?>"/></div>
 
                         <div>
 
@@ -248,7 +249,6 @@ include("includes/functions.php");
                                 $thisComment = makeClickableLinks($comment->text);
 
                                 $postTime = strtotime($comment->date);
-
                                 include("includes/timeFormat.php");
 
                                 echo "<p><strong class='userRollover'>".$comment->user_name."</strong> <span class='timePosted'>$postTime</span><br/> <span class='mainText'>".$thisComment."</span></p>";
@@ -309,7 +309,7 @@ include("includes/functions.php");
 		            $newsQ = $db->query("SELECT * FROM news ORDER BY id DESC LIMIT 10");
 	            }
                 while($news = $newsQ->fetch_assoc() ){
-                    echo "<div class='newsCard'><img src='$news[image]' style='width:100%;' class='newsImage' data-news-id='".$news[id]."'/>";
+                    echo "<div class='newsCard'><img src='news_images/$news[image]' style='width:100%;' class='newsImage' data-news-id='".$news[id]."'/>";
                     #echo "<h4><a href='news.php?story=$news[id]'>" . stripslashes($news[title]) . "</a></h4>";
                     echo "<h4 class='newsTitle' data-news-id='".$news[id]."'>" . stripslashes($news[title]) . "</h4></div>";
                 }
@@ -318,7 +318,10 @@ include("includes/functions.php");
         </div> <!-- end of wrapper -->
 
 
-		<?php include("includes/footer.php"); ?>
+		<?php
+			include("includes/footer.php");
+			include("includes/mobile-nav.php");
+		?>
 
 		<?php
 		if(isset($_GET['welcome'])){

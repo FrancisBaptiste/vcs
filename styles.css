@@ -1040,6 +1040,10 @@ ul{
 .newsTitle:hover{
 	text-decoration: underline;
 }
+.newsTitle a{
+	color:black;
+	text-decoration: none;
+}
 
 .notificationPageItem{
 	-webkit-transition: 400ms all;
@@ -1447,4 +1451,8 @@ ul{
 .slide{
 	width: 400px;
 	float:left;
+}
+
+#mobile-nav{
+	display:none;
 }

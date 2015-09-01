@@ -22,15 +22,15 @@ curl_close($ch);
 fclose($fp);
 
 include('simpleImage.php');
-$thisImage = new SimpleImage(); 
-$thisImage->load($tempImageName); 
+$thisImage = new SimpleImage();
+$thisImage->load($tempImageName);
 $thisImage->resizeToWidth(220);
 $thisImageName = "../news_images/" . $rightNow . ".jpg";
 $saveImage = $thisImage->save($thisImageName);
 
 unlink($tempImageName);
 
-$image = "http://vancitysocial.ca/news_images/" . $rightNow . ".jpg";
+$image = $rightNow . ".jpg";
 
 $excerpt = htmlentities($excerpt);
 

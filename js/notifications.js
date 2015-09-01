@@ -20,14 +20,14 @@ $(function(){
         })
         .fail(function() { alert("something didn't work"); });
     });
-    
+
     $("body").on("click", "#notification-close", function(){
-        $("#notificationMask").hide();
+        $("#notificationMask").fadeOut();
     });
-    
+
     // have to add edit this event listener up top, so it works for the notification at the top of the newsfeed.
-    
-    
+
+
     /*
     $("#oldNotifications").click(function(){
         if ($(this).hasClass("open")) {
@@ -40,7 +40,7 @@ $(function(){
             $(this).html("old notifications [-]");
         }
     });*/
-    
+
     $(".notificationPageItem").click(function(){
         $toFetch = $(this).attr("data-fetch-pid");
         $.post("functions/getPost.php", {pid: $toFetch}, function(data){
@@ -48,5 +48,11 @@ $(function(){
             $("#notificationMask").show();
         })
         .fail(function() { alert("something didn't work"); });
+    });
+
+    $("#notificationMask").click(function(e){
+	    if(e.target == this){
+		    $("#notificationMask").fadeOut();
+	    }
     });
 });

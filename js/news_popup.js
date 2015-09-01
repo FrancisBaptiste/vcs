@@ -1,6 +1,6 @@
 $(function(){
 	var $userID = $("#sidebar").attr("data-user-id");
-	
+
    $("#newsBox").on("click", "#commentButton", function(){
       if ($userID != "") {
         createComment();
@@ -8,7 +8,7 @@ $(function(){
          alert("you need to be signed in to leave a comment");
       }
    });
-   
+
    //$("#comment").keypress(function(e){
    $("#newsBox").on("keypress", "#comment", function(e){
         if(e.which == 13){
@@ -21,49 +21,49 @@ $(function(){
             }
         }
     });
-    
-    
+
+
     function createComment(){
 	    var $comment = $("#comment").val();
         var $userID = $("#sidebar").attr("data-user-id");
         if ($userID == "undefined") {
             $userID = 0;
         }
-        
+
         var $storyID = $("#currentStory").attr("data-story-id");
-        
+
         $response = 0;
 
         $.post("functions/createNewsComment.php", {storyID:$storyID, comment:$comment, userID:$userID}, function(data){
             if(data != "false"){
-               
+
                 $("#comment").val("");
-                
+
                 var $thisTitle = $("#currentStory h2").text();
-                
-                
+
+
                var newPost = '<div class="post" data-user-id="">';
                newPost += "<div class='topicTag' style='background-color: rgb(68,68,220);'><span><a href='app.php?i=1'>news</a></span></div>";
                newPost +=   '<div class="picMask"><img src="' + $("#profilePic").attr("src") + '"></div>';
                newPost +=   '<div>';
-               
+
                newPost += '<p><strong class="userRollover" data-user-id="">'+$("#sidebar").attr("data-user-name")+'</strong> <span class="mainText"><span class="newsPost">commented on the story <a href="http://vancitysocial.ca/news.php?story='+$storyID+'">'+$thisTitle+'</a>...</span> '+$comment+'</span></p>';
                newPost +=  '</div><div class="breaker"></div></div>';
-               
+
                $("#posts").prepend(newPost);
-               
+
                var successSubmit = "<p>You're comment, <em>&ldquo;" + $comment + "&rdquo;</em> has been posted to the main timeline.";
-               
+
                $("#newsCommentSubmit").html(successSubmit);
-                
+
             }else{
                 alert("technical difficulties, try posting again later");
             }
         });
     }
-   
-   
-   
+
+
+
    /* reply to comment button */
    $("#newsBox").on('click', '.respondComment', function(){
    //$(".respondComment").click(function(){
@@ -76,20 +76,20 @@ $(function(){
       $(".response").val("");
       $(".responseGuestName").val("");
       $(".respondComment").html("Respond to Comment");
-      
+
       if (state == 1) {
          $root.find(".responseBlock").show();
          $(this).html("Hide Comment Box");
       }else{
          $root.find(".responseBlock").hide();
       }
-      
+
       var $userID = $("#sidebar").attr("data-user-id");
    });
-   
+
    //$(".responseButton").click(function(){
    /* I don't think this is doing anything anymore
-	   
+
    $("#newsBox").on('click', '.responseButton', function(){
       var $root = $(this).parent().parent();
       var $commentID = $root.attr("comment_id");
@@ -107,12 +107,12 @@ $(function(){
       }
       var $response = $commentID;
       var $thisBlock = $(this).parent();
-      
-      
+
+
       $.post("functions/createNewsComment.php", {storyID:$storyID, comment:$text, userID:$userID, guestName:$guestName, responseID:$response, thread:$newThreadCount}, function(data){
          if(data != "false"){
             $(".response").val("");
-            
+
             $newContent = '<div class="comment threaded indent'+ $newThreadCount +'" comment_id="'+ data +'" thread_count="'+ $newThreadCount + '"><div class="picMask">';
             if ($userID == 0) {
                $newContent += '<img src="http://vancitysocial.ca/images/noProfile.jpg"></div>';
@@ -125,33 +125,33 @@ $(function(){
             //$newContent += '<br>Guest Name:<br><input type="text" class="responseGuestName"><textarea name="comment" class="response" cols="25" rows="5"></textarea>';
             //$newContent += '   <div class="responseButton">Comment</div></div>';
             $newContent += "</div>";
-            
+
             $root.after($newContent);
             $thisBlock.hide();
             $(".respondComment").html("Respond to Comment");
-            
+
          }else{
             alert("technical difficulties, try posting again later");
          }
       });
-       
+
    });
-   
-   
+
+
    */
-   
-   
-   
-   
-   
+
+
+
+
+
    /* send user message button */
-   
+
    /*
    Note: for now I'm getting rid of all this, because we can't have popups inside of popups
    it would get a little too convoluted.
    Or maybe it's not that bad.
-   
-   
+
+
    //$(".messageUser").click(function(){
    $("#newsBox").on("click", ".messageUser", function(){
       $("#messageUserMask").show();
@@ -159,11 +159,11 @@ $(function(){
       $("#messageUserBox").attr("passive_user", passiveUser);
       $("#submitDirect").show();
       $("#messsageAlert").hide();
-            
+
       var thisComment = $(this).parent().parent().find(".mainText").text();
       $("#message").text("In response to '"+thisComment+"'... ");
    });
-   
+
    //$("#messageClose").click(function(){
    $("#newsBox").on("click", ".messageUser", function(){
    	  $("#messageAlert").hide();
@@ -171,20 +171,20 @@ $(function(){
       $("#message").val("");
       $("#messageUserMask").hide();
    });
-   
+
    $("#messageButton").click(function(){
       $thisMess = $("#message").val();
       var pUser = $(this).parents("#messageUserBox").attr("passive_user");
       var aUser = $("#sidebar").attr("user_id");
-            
+
       $.post("functions/directMessage.php", {passive: pUser, active: aUser, message:$thisMess}, function(data){
 	      if(data == "true"){
 		      $("#messageAlert").show();
 		      $("#submitDirect").hide();
 	      }
       });
-      
+
    });
    */
-   
+
 });

@@ -30,7 +30,7 @@ if($timePassed < 60){
 }else if($timePassed < 43200){
     $postTime = "about eleven hours ago";
 }else if($timePassed < 46800){
-    $postTime = "about twelve hours ago";   
+    $postTime = "about twelve hours ago";
 }else if($timePassed < 50400){
     $postTime = "about thirteen hours ago";
 }else if($timePassed < 86400){
@@ -50,7 +50,7 @@ if($timePassed < 60){
 }else if($timePassed < 1814400){
     $postTime = "two weeks ago";
 }else{
-    $postTime = $comment->date;
+    $postTime = date('Y-M-d', $postTime);
 }
 
 ?>
